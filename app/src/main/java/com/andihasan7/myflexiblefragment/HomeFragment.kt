@@ -30,6 +30,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             val mFragmentManager = parentFragmentManager
             mFragmentManager.beginTransaction().apply {
                 replace(R.id.frame_container, mCategoryFragment, CategoryFragment::class.java.simpleName)
+                //hapus addToBackStack() jika ingin aplikasi langsung close karena fragment sebelumnya tidak tersimpan di stack
                 addToBackStack(null)
                 commit()
             }
