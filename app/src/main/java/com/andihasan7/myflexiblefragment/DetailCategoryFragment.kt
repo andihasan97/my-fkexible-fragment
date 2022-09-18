@@ -28,6 +28,7 @@ class DetailCategoryFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail_category, container, false)
     }
 
@@ -62,6 +63,18 @@ class DetailCategoryFragment : Fragment() {
             tvCategoryDescription.text =description
         }
     }
+
+    /*
+    gunakan metode ini jika ingin menjaga data agar tetap aman ketika terjadi config changes (portrait-landscape)
+     */
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putString(EXTRA_DESCRIPTION, description)
+    }
+    /*
+    Kode yang akan dijalankan ketika option dialog dipilih klik "Pilih"
+     */
     internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener = object : OptionDialogFragment.OnOptionDialogListener {
         override fun onOptionChoosen(text: String?) {
             Toast.makeText(requireActivity(), text, Toast.LENGTH_SHORT).show()
