@@ -1,5 +1,6 @@
 package com.andihasan7.myflexiblefragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,12 @@ class DetailCategoryFragment : Fragment() {
         tvCategoryDescription = view.findViewById(R.id.tv_category_description)
         btnProfile = view.findViewById(R.id.btn_profile)
         btnShowDialog = view.findViewById(R.id.btn_show_dialog)
+
+        //memanggil activity dari fragment
+        btnProfile.setOnClickListener {
+            val mIntent = Intent(requireActivity(), ProfileActivity::class.java)
+            startActivity(mIntent)
+        }
 
         btnShowDialog.setOnClickListener {
             val mOptionDialogFragment = OptionDialogFragment()
