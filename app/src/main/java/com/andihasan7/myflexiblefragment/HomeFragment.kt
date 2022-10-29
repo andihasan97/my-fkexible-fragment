@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.commit
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
@@ -35,11 +36,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
              */
             val mCategoryFragment = CategoryFragment()
             val mFragmentManager = parentFragmentManager
-            mFragmentManager.beginTransaction().apply {
-                replace(R.id.frame_container, mCategoryFragment, CategoryFragment::class.java.simpleName)
-                //hapus addToBackStack() jika ingin aplikasi langsung close karena fragment sebelumnya tidak tersimpan di stack
+            mFragmentManager.commit {
                 addToBackStack(null)
-                commit()
+                replace(R.id.frame_container, mCategoryFragment, CategoryFragment::class.java.simpleName)
             }
         }
     }
