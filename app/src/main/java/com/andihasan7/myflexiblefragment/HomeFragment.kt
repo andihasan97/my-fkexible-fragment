@@ -25,6 +25,22 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
+        if (v.id == R.id.btn_category) {
+            /*
+            Metode addToBackStack akan menambahkan fragment ke backstack
 
+            Behaviour dari back button :
+            jika ada fragment di dalam backstack maka fragment yang akan di close / remove
+            jika sudah tidak ada fragment di dalam backstack maka activity yang akan di close / finish
+             */
+            val mCategoryFragment = CategoryFragment()
+            val mFragmentManager = parentFragmentManager
+            mFragmentManager.beginTransaction().apply {
+                replace(R.id.frame_container, mCategoryFragment, CategoryFragment::class.java.simpleName)
+                //hapus addToBackStack() jika ingin aplikasi langsung close karena fragment sebelumnya tidak tersimpan di stack
+                addToBackStack(null)
+                commit()
+            }
+        }
     }
 }
